@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.3",
     "@types/node": "20.3.1",
     "@types/react": "18.2.13",
     "@types/react-dom": "18.2.6",
     "autoprefixer": "10.4.14",
+    "material-icons": "^1.13.8",
     "next": "13.4.7",
+    "next-google-fonts": "^2.2.0",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
