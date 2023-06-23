@@ -71,21 +71,21 @@ export default function Enter() {
 							</div>
 						) : null}
 					</div>
-					<button className="mt-5 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 focus:outline-none ">
+					<button className="transition-colors mt-5 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 focus:outline-none ">
 						{method === "email" ? "Get login link" : null}
 						{method === "phone" ? "Get one-time password" : null}
 					</button>
 				</form>
 
-				<div className="mt-8">
-					<div className="relative">
+				<div>
+					<div className="relative my-8">
 						<div className="absolute w-full border-t border-zinc-300" />
 						<div className="relative -top-3 text-center ">
 							<span className="bg-white px-2 text-sm text-zinc-500">Or</span>
 						</div>
 					</div>
 					<div className="grid gap-2 text-zinc-500">
-						<button className="w-full border border-zinc-200 rounded-lg py-3 hover:bg-zinc-100 hover:text-black">
+						<button className="transition-colors w-full border border-zinc-200 rounded-lg py-3 hover:bg-zinc-100 hover:text-black">
 							<div className="flex items-center justify-center gap-2">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@ export default function Enter() {
 								<span className="text-sm">Continue with Google</span>
 							</div>
 						</button>
-						<button className="w-full border border-zinc-200 rounded-lg py-3 hover:bg-zinc-100 hover:text-black">
+						<button className="transition-colors w-full border border-zinc-200 rounded-lg py-3 hover:bg-zinc-100 hover:text-black">
 							<div className="flex items-center justify-center gap-2">
 								<svg
 									className="w-5 h-5"
@@ -119,7 +119,7 @@ export default function Enter() {
 								<span className="text-sm">Continue with Github</span>
 							</div>
 						</button>
-						<button className="w-full border border-zinc-200 rounded-lg py-3 hover:bg-zinc-100 hover:text-black">
+						<button className="transition-colors w-full border border-zinc-200 rounded-lg py-3 hover:bg-zinc-100 hover:text-black">
 							<div className="flex items-center justify-center gap-2">
 								<svg
 									className="w-5 h-5"
