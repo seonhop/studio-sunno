@@ -11,9 +11,7 @@ export default function Enter() {
 	const onPhoneClick = () => setMethod("phone");
 	return (
 		<div className="m-12">
-			<h3 className="text-3xl text-center font-bold font-['Luckiest Guy']">
-				Studio Sunno
-			</h3>
+			<h3 className="text-3xl text-center font-bold logo">Studio Sunno</h3>
 
 			<div className="flex flex-col my-10">
 				<div className="grid grid-cols-2  bg-gray-100 p-1 rounded-xl">
