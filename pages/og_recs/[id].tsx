@@ -5,10 +5,10 @@ const ItemDetail: NextPage = () => {
 	return (
 		<div className="m-4 h-screen">
 			<h3 className="logo text-2xl">Studio Sunno</h3>
-			<div className="relative flex gap-2 mt-2">
+			<div className="relative flex gap-2 mt-3">
 				<div className="absolute w-full border-t-2 border-black" />
 				<div className="relative -top-3 text-center ">
-					<span className="bg-white text-xs font-semibold text-black pr-2 ">
+					<span className="bg-white text-sm font-semibold text-black pr-2 ">
 						All / Sweet Dreams, July
 					</span>
 				</div>

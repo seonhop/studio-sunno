@@ -53,7 +53,7 @@ export default function Enter() {
 							<input
 								type="email"
 								required
-								className="px-2 appearance-none focus:outline-0 w-full border border-zinc-300 rounded-lg shadow-sm placeholder-zinc-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+								className="px-2 py-2 appearance-none focus:outline-0 w-full border border-zinc-300 rounded-lg shadow-sm placeholder-zinc-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
 							/>
 						) : null}
 						{method === "phone" ? (
