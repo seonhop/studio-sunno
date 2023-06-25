@@ -56,7 +56,8 @@ const Upload: NextPage = () => {
 					</label>
 				</div>
 			</div>
-			<div className="flex justify-end w-full">
+			<div className="flex justify-end w-full gap-4">
+				<button className="font-medium">Save</button>
 				<button className="rounded-sm px-4 py-2 bg-stone-200 border-black font-medium hover:bg-stone-300 ">
 					Upload
 				</button>

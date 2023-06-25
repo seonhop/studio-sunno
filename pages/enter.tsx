@@ -14,13 +14,13 @@ export default function Enter() {
 			<h3 className="text-3xl text-center font-bold logo">Studio Sunno</h3>
 
 			<div className="flex flex-col my-10">
-				<div className="grid grid-cols-2  bg-gray-100 p-1 rounded-xl">
+				<div className="grid grid-cols-2 p-1 rounded-sm">
 					<button
 						onClick={onEmailClick}
 						className={cls(
-							"text-sm p-3 ",
+							"text-sm p-1.5 ",
 							method === "email"
-								? "bg-white rounded-xl text-black font-semibold"
+								? "rounded-full text-white font-semibold bg-black"
 								: "text-zinc-500"
 						)}
 					>
@@ -31,9 +31,9 @@ export default function Enter() {
 					<button
 						onClick={onPhoneClick}
 						className={cls(
-							"text-sm p-3 ",
+							"text-sm p-1 ",
 							method === "phone"
-								? "bg-white rounded-xl text-black font-semibold"
+								? "rounded-full text-white font-semibold bg-black"
 								: "text-zinc-500"
 						)}
 					>
@@ -44,32 +44,33 @@ export default function Enter() {
 					</button>
 				</div>
 				<form className="my-4">
-					<label className="text-xs text-zinc-500">
+					<label className="font-medium">
 						{method === "email" ? "Email address" : null}
 						{method === "phone" ? "Phone number" : null}
 					</label>
-					<div className="mt-1">
+					<div>
 						{method === "email" ? (
 							<input
 								type="email"
 								required
-								className="px-2 py-2 appearance-none focus:outline-0 w-full border border-zinc-300 rounded-lg shadow-sm placeholder-zinc-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+								id="title"
+								className="mt-1 px-2 py-1 text-sm appearance-none focus:outline-0 w-full border-2 border-black rounded-sm  placeholder-zinc-400 focus:outline-none focus:border-black focus:ring-0"
 							/>
 						) : null}
 						{method === "phone" ? (
 							<div className="w-full flex items-center">
-								<span className="h-full flex items-center justify-center px-3 py-2 rounded-l-md border border-r-0 border-zinc-300 bg-zinc-50 text-zinc-500 select-none ">
+								<span className="text-sm mt-1 h-full flex items-center justify-center px-3 py-1 rounded-l-sm border-2 border-r-0 border-black   select-none font-medium ">
 									+1
 								</span>
 								<input
 									type="number"
 									required
-									className="appearance-none w-full px-3 py-2 border border-zinc-300 rounded-md rounded-l-none shadow-sm placeholder-zinc-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+									className=" mt-1 px-2 py-1 text-sm appearance-none focus:outline-0 w-full border-l-0 border-t-2 border-r-2 border-b-2 border-black rounded-r-sm rounded-l-0  placeholder-zinc-400 focus:outline-none focus:ring-0 focus:outline-black focus:border-black"
 								/>
 							</div>
 						) : null}
 					</div>
-					<button className="transition-colors mt-5 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 focus:outline-none ">
+					<button className="transition-colors mt-5 w-full bg-stone-200 hover:bg-stone-300  py-2 px-4 border border-transparent rounded-sm shadow-sm text-sm font-medium focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 focus:outline-none ">
 						{method === "email" ? "Get login link" : null}
 						{method === "phone" ? "Get one-time password" : null}
 					</button>
@@ -77,13 +78,13 @@ export default function Enter() {
 
 				<div>
 					<div className="relative my-8">
-						<div className="absolute w-full border-t border-zinc-300" />
+						<div className="absolute w-full border-t-2 border-black" />
 						<div className="relative -top-3 text-center ">
-							<span className="bg-white px-2 text-sm text-zinc-500">Or</span>
+							<span className="bg-white px-2 text-sm font-semibold">Or</span>
 						</div>
 					</div>
-					<div className="grid gap-2 text-zinc-500">
-						<button className="transition-colors w-full border border-zinc-200 rounded-lg py-3 hover:bg-zinc-100 hover:text-black">
+					<div className="grid gap-2 text-sm">
+						<button className="transition-colors w-full rounded-sm py-2 border-2 border-black hover:bg-stone-100">
 							<div className="flex items-center justify-center gap-2">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +101,7 @@ export default function Enter() {
 								<span className="text-sm">Continue with Google</span>
 							</div>
 						</button>
-						<button className="transition-colors w-full border border-zinc-200 rounded-lg py-3 hover:bg-zinc-100 hover:text-black">
+						<button className="transition-colors w-full rounded-sm py-2 border-2 border-black hover:bg-stone-100">
 							<div className="flex items-center justify-center gap-2">
 								<svg
 									className="w-5 h-5"
@@ -117,7 +118,7 @@ export default function Enter() {
 								<span className="text-sm">Continue with Github</span>
 							</div>
 						</button>
-						<button className="transition-colors w-full border border-zinc-200 rounded-lg py-3 hover:bg-zinc-100 hover:text-black">
+						<button className="transition-colors w-full rounded-sm py-2 border-2 border-black hover:bg-stone-100">
 							<div className="flex items-center justify-center gap-2">
 								<svg
 									className="w-5 h-5"
