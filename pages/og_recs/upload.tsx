@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { Female, ChevronRight } from "@mui/icons-material";
 
 const Upload: NextPage = () => {
 	return (
@@ -14,6 +15,11 @@ const Upload: NextPage = () => {
 			</div>
 
 			<div className="grid grid-cols-4 gap-2">
+				<div className="col-span-full flex items-end justify-end rounded-sm w-full">
+					<button className=" py-1 bg-none font-semibold flex items-center">
+						Open Editor <ChevronRight></ChevronRight>
+					</button>
+				</div>
 				<label
 					htmlFor="file_input"
 					className="col-span-full flex flex-col cursor-pointer items-center justify-center border-2 border-dashed border-black h-72 rounded-sm  hover:bg-zinc-100  transition-colors"
@@ -37,6 +43,22 @@ const Upload: NextPage = () => {
 					<input id="file_input" className="hidden" type="file" />
 				</label>
 				<div className="flex flex-col gap-4 col-span-full mt-2">
+					<div className="flex w-full gap-4">
+						<label htmlFor="type" className=" font-medium w-1/2">
+							Type
+							<select
+								id="type"
+								className="mt-1 px-2 py-1 text-sm appearance-none focus:outline-0 w-full border-2 border-black rounded-sm  placeholder-zinc-400 focus:outline-none text-black"
+							></select>
+						</label>
+						<label htmlFor="package_selection" className=" font-medium w-1/2">
+							Package Selection
+							<input
+								id="package_selection"
+								className="mt-1 px-2 py-1 text-sm appearance-none focus:outline-0 w-full border-2 border-black rounded-sm  placeholder-zinc-400 focus:outline-none"
+							/>
+						</label>
+					</div>
 					<label htmlFor="title" className=" font-medium ">
 						Title
 						<input

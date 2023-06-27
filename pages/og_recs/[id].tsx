@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import FemaleIcon from "@mui/icons-material/FemaleOutlined";
+import { Female, ChevronRight } from "@mui/icons-material";
 
 const ItemDetail: NextPage = () => {
 	return (
@@ -19,7 +19,7 @@ const ItemDetail: NextPage = () => {
 					<div className="flex flex-col ">
 						<div className="flex items-center ">
 							<span className="uppercase text-sm text-zinc-400">July /</span>
-							<FemaleIcon fontSize="small" className="text-zinc-400 " />
+							<Female fontSize="small" className="text-zinc-400 " />
 							<span className="uppercase text-sm text-zinc-400">
 								/ 1 YR 4 Mo
 							</span>
