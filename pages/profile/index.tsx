@@ -1,21 +1,11 @@
 import type { NextPage } from "next";
 import "material-icons/iconfont/material-icons.css";
-import { Send } from "@mui/icons-material";
+import { Send, ChevronRight } from "@mui/icons-material";
+import Layout from "../components/layout";
 
 const Profile: NextPage = () => {
 	return (
-		<>
-			<div className="mt-4 mx-4">
-				<h3 className="logo text-2xl">Studio Sunno</h3>
-				<div className="relative flex gap-2 mt-3">
-					<div className="absolute w-full border-t-2 border-black" />
-					<div className="relative -top-3 text-center ">
-						<span className="bg-white text-sm font-semibold text-black pr-2 ">
-							Profile
-						</span>
-					</div>
-				</div>
-			</div>
+		<Layout title="Profile">
 			<div className="w-full grid gap-1">
 				<div className="w-full grid h-80 grid-cols-5 gap-1">
 					<div className="col-span-3  bg-stone-400 text-white p-4 flex flex-col justify-end">
@@ -31,20 +21,18 @@ const Profile: NextPage = () => {
 						</div>
 					</div>
 				</div>
-				<div className="col-span-full h-52 flex items-end text-sm justify-center py-4 bg-slate-100">
-					<button className="py-2 px-4 rounded-full bg-black text-white">
-						Your Stickers Here
+				<div className="col-span-full h-52 flex items-end text-sm justify-center py-2 bg-slate-100">
+					<button className="">
+						<span>Stickers</span>
+						<ChevronRight />
 					</button>
 				</div>
 				<div className="col-span-full grid grid-cols-3 gap-1 h-40">
 					<div className=" bg-stone-300 text-white px-3 py-2 flex flex-col justify-end">
 						<span>Drafts</span>
 					</div>
-					<div className=" bg-stone-300 text-white px-3 py-2 flex flex-col justify-end">
-						<span>Trash</span>
-					</div>
-					<div className="   flex items-center justify-center flex-col gap-2">
-						<span className="text-xs w-full text-center">
+					<div className="flex items-center justify-center flex-col gap-2">
+						<span className="text-xs w-full text-center mt-4">
 							Questions or Feedback?
 						</span>
 						<div className="flex text-sm gap-1 ">
@@ -52,9 +40,12 @@ const Profile: NextPage = () => {
 							<span className="font-semibold">studio_sunno</span>
 						</div>
 					</div>
+					<div className=" bg-stone-300 text-white px-3 py-2 flex flex-col justify-end">
+						<span>Trash</span>
+					</div>
 				</div>
 			</div>
-		</>
+		</Layout>
 	);
 };
 
