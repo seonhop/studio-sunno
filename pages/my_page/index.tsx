@@ -5,7 +5,7 @@ import Layout from "../components/layout";
 
 const Profile: NextPage = () => {
 	return (
-		<Layout title="Profile">
+		<Layout title="My Page">
 			<div className="w-full grid gap-1">
 				<div className="w-full grid h-80 grid-cols-5 gap-1">
 					<div className="col-span-3  bg-stone-400 text-white p-4 flex flex-col justify-end">
@@ -21,7 +21,15 @@ const Profile: NextPage = () => {
 						</div>
 					</div>
 				</div>
-				<div className="col-span-full h-52 flex items-end text-sm justify-center py-2 bg-slate-100">
+				<div className="col-span-full pt-4 pb-2 flex flex-col items-center text-sm  gap-4 justify-center">
+					<div className="flex justify-between w-full px-4 h-16">
+						<div className="w-16 h-16 bg-stone-200"></div>
+						<div className="w-16 h-16 bg-stone-200"></div>
+						<div className="w-16 h-16 bg-stone-200"></div>
+						<div className="w-16 h-16 bg-stone-200"></div>
+						<div className="w-16 h-16 bg-stone-200"></div>
+						<div className="w-16 h-16 bg-stone-200"></div>
+					</div>
 					<button className="">
 						<span>Stickers</span>
 						<ChevronRight />
@@ -31,7 +39,7 @@ const Profile: NextPage = () => {
 					<div className=" bg-stone-300 text-white px-3 py-2 flex flex-col justify-end">
 						<span>Drafts</span>
 					</div>
-					<div className="flex items-center justify-center flex-col gap-2">
+					<div className="flex items-center justify-center flex-col gap-2 bg-stone-100">
 						<span className="text-xs w-full text-center mt-4">
 							Questions or Feedback?
 						</span>

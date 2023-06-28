@@ -1,5 +1,10 @@
 import type { NextPage } from "next";
-import { ChevronRight } from "@mui/icons-material";
+import {
+	ChevronRight,
+	AddPhotoAlternateOutlined,
+	Album,
+	EditOutlined,
+} from "@mui/icons-material";
 import Layout from "../components/layout";
 
 const Upload: NextPage = () => {
@@ -12,45 +17,85 @@ const Upload: NextPage = () => {
 							Open Editor <ChevronRight></ChevronRight>
 						</button>
 					</div>
-					<label
-						htmlFor="file_input"
-						className="col-span-full flex flex-col cursor-pointer items-center justify-center border-2 border-dashed border-black h-72 rounded-sm  hover:bg-zinc-100  transition-colors"
-					>
-						<svg
-							className="h-12 w-12 "
-							stroke="currentColor"
-							fill="none"
-							viewBox="0 0 48 48"
-							aria-hidden="true"
-						>
-							<path
-								d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-								strokeWidth={2}
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							/>
-						</svg>
-						<span className="text-xs">Click to upload</span>
-
-						<input id="file_input" className="hidden" type="file" />
-					</label>
-					<div className="flex flex-col gap-4 col-span-full mt-2">
-						<div className="flex w-full gap-4">
-							<label htmlFor="type" className=" font-medium w-1/2">
+					<div className="flex col-span-full gap-2">
+						<div className="flex w-1/3 flex-col gap-2">
+							<label htmlFor="type" className=" font-medium w-full">
 								Type
 								<select
 									id="type"
 									className="mt-1 px-2 py-1 text-sm appearance-none focus:outline-0 w-full border-2 border-black rounded-sm  placeholder-zinc-400 focus:outline-none text-black"
 								></select>
 							</label>
-							<label htmlFor="package_selection" className=" font-medium w-1/2">
-								Package Selection
+						</div>
+						<div className="flex grow flex-col gap-1 ">
+							<span className="font-medium">Contents</span>
+							<label className="flex gap-1 bg-stone-200 hover:bg-stone-300 px-2 py-1.5 items-center justify-center cursor-pointer">
+								<span className="text-sm">
+									Upload your images to the recording
+								</span>
+
 								<input
-									id="package_selection"
-									className="mt-1 px-2 py-1 text-sm appearance-none focus:outline-0 w-full border-2 border-black rounded-sm  placeholder-zinc-400 focus:outline-none"
+									id="contents"
+									className="hidden px-2 py-1 text-sm appearance-none focus:outline-0 w-full border-2 border-black rounded-r-sm  placeholder-zinc-400 focus:outline-none"
+									type="file"
+									accept="image/png, image/jpeg, image/jpg"
+									multiple
 								/>
 							</label>
 						</div>
+					</div>
+					<div className="col-span-full gap-2 flex pt-4 border-t-2 border-black mt-2">
+						<label
+							htmlFor="file_input"
+							className="w-1/2 flex flex-col cursor-pointer items-center justify-center border-2 border-dashed border-black h-52 rounded-sm  hover:bg-zinc-100  transition-colors"
+						>
+							<AddPhotoAlternateOutlined />
+							<span className="text-xs">Choose cover design</span>
+
+							<input
+								id="file_input"
+								className="hidden"
+								type="file"
+								accept="image/png, image/jpeg, image/jpg"
+							/>
+						</label>
+						<div className="w-1/2 flex flex-col gap-2">
+							<label
+								htmlFor="file_input"
+								className="w-full flex flex-col cursor-pointer items-center justify-center border-2 border-dashed border-black grow rounded-sm  hover:bg-zinc-100  transition-colors"
+							>
+								<Album />
+								<span className="text-xs">Choose recording design</span>
+
+								<input
+									id="file_input"
+									className="hidden"
+									type="file"
+									accept="image/png, image/jpeg, image/jpg"
+								/>
+							</label>
+							<div className="flex gap-2 items-center">
+								<div className="w-4 h-4 bg-blue-500"></div>
+								<div className="w-4 h-4 bg-red-500"></div>
+								<div className="w-4 h-4 bg-orange-500"></div>
+								<div className="w-4 h-4 bg-amber-500"></div>
+								<div className="w-4 h-4 bg-emerald-500"></div>
+								<div className="w-4 h-4 bg-violet-500"></div>
+								<EditOutlined fontSize="small" />
+								<label className="text-xs px-2 bg-stone-200 py-0.5 hover:bg-stone-300 cursor-pointer">
+									Upload
+									<input
+										id="file_input"
+										className="hidden"
+										type="file"
+										accept="image/png, image/jpeg, image/jpg"
+									/>
+								</label>
+							</div>
+						</div>
+					</div>
+
+					<div className="flex flex-col gap-4 col-span-full mt-2">
 						<label htmlFor="title" className=" font-medium ">
 							Title
 							<input
@@ -70,9 +115,9 @@ const Upload: NextPage = () => {
 						</label>
 					</div>
 				</div>
-				<div className="flex justify-end w-full gap-4">
+				<div className="flex justify-end w-full gap-4 mb-4">
 					<button className="font-medium">Save</button>
-					<button className="rounded-sm px-4 py-2 bg-stone-200 border-black font-medium hover:bg-stone-300 ">
+					<button className="rounded-sm px-4 py-1 bg-stone-200 border-black font-medium hover:bg-stone-300 ">
 						Upload
 					</button>
 				</div>

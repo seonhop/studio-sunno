@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { cls } from "../libs/utils";
+import { SiteMenu, Header, BreadCrumbs } from "./header_nav";
 
 interface LayoutProps {
 	title?: string;
@@ -7,33 +9,21 @@ interface LayoutProps {
 	children: React.ReactNode;
 }
 
-export default function Layout({
-	title,
-	canGoBack,
-	isWideScreen,
-	children,
-}: LayoutProps) {
-	return (
-		<div>
-			<div className="mt-4 mx-4 max-w-6xl">
-				<h3 className="logo text-2xl">Studio Sunno</h3>
-				<div className="relative flex gap-2 mt-3">
-					<div className="absolute w-full border-t-2 border-black" />
-					<div className="relative -top-3 text-center ">
-						<span className="bg-white text-sm font-semibold text-black pr-2 ">
-							{title}
-						</span>
-					</div>
-				</div>
-			</div>
+export default function Layout({ title, children }: LayoutProps) {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const onMenuClick = () => setIsMenuOpen((prev) => !prev);
 
-			<div>{children}</div>
+	return (
+		<div className={cls("flex flex-col", isMenuOpen ? "h-screen" : "")}>
+			<Header isMenuOpen={isMenuOpen} onMenuClick={onMenuClick} />
+			{isMenuOpen ? (
+				<SiteMenu isMenuOpen={isMenuOpen} />
+			) : (
+				<>
+					<BreadCrumbs title={title} />
+					{children}
+				</>
+			)}
 		</div>
 	);
 }
-
-/*
-{isWideScreen ? (
-				<nav className="bg-white text-gray-800 border-t fixed bottom-0 pb-10 pt-3 flex justify-between items-center"></nav>
-			) : null}
-*/
