@@ -1,11 +1,16 @@
 import { useState } from "react";
 import "material-icons/iconfont/material-icons.css";
+import { cls } from "./libs/utils";
+import { useForm } from "react-hook-form";
+import { TypedInput } from "./components/input";
 
-function cls(...classNames: string[]) {
-	return classNames.join(" ");
+interface EnterFormProps {
+	email?: string;
+	phone?: string;
 }
 
 export default function Enter() {
+	const { register } = useForm<EnterFormProps>();
 	const [method, setMethod] = useState<"email" | "phone">("email");
 	const onEmailClick = () => setMethod("email");
 	const onPhoneClick = () => setMethod("phone");
@@ -49,28 +54,12 @@ export default function Enter() {
 						{method === "phone" ? "Phone number" : null}
 					</label>
 					<div>
-						{method === "email" ? (
-							<input
-								type="email"
-								required
-								id="title"
-								className="mt-1 px-2 py-1 text-sm appearance-none focus:outline-0 w-full border-2 border-black rounded-sm  placeholder-zinc-400 focus:outline-none focus:border-black focus:ring-0"
-							/>
-						) : null}
+						{method === "email" ? <TypedInput type="email" id="email" /> : null}
 						{method === "phone" ? (
-							<div className="w-full flex items-center">
-								<span className="text-sm mt-1 h-full flex items-center justify-center px-3 py-1 rounded-l-sm border-2 border-r-0 border-black   select-none font-medium ">
-									+1
-								</span>
-								<input
-									type="number"
-									required
-									className=" mt-1 px-2 py-1 text-sm appearance-none focus:outline-0 w-full border-l-0 border-t-2 border-r-2 border-b-2 border-black rounded-r-sm rounded-l-0  placeholder-zinc-400 focus:outline-none focus:ring-0 focus:outline-black focus:border-black"
-								/>
-							</div>
+							<TypedInput type="number" id="phone" />
 						) : null}
 					</div>
-					<button className="transition-colors mt-5 w-full bg-stone-200 hover:bg-stone-300  py-2 px-4 border border-transparent rounded-sm shadow-sm text-sm font-medium focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 focus:outline-none ">
+					<button className="transition-colors mt-5 w-full bg-stone-200 hover:bg-stone-300  py-2 px-4 border border-transparent rounded-sm shadow-sm text-sm font-medium focus:ring-2 focus:ring-offset-2 focus:ring-black focus:outline-none ">
 						{method === "email" ? "Get login link" : null}
 						{method === "phone" ? "Get one-time password" : null}
 					</button>

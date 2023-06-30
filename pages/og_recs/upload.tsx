@@ -6,6 +6,7 @@ import {
 	EditOutlined,
 } from "@mui/icons-material";
 import Layout from "../components/layout";
+import { TypedInput } from "../components/input";
 
 const Upload: NextPage = () => {
 	return (
@@ -98,10 +99,7 @@ const Upload: NextPage = () => {
 					<div className="flex flex-col gap-4 col-span-full mt-2">
 						<label htmlFor="title" className=" font-medium ">
 							Title
-							<input
-								id="title"
-								className="mt-1 px-2 py-1 text-sm appearance-none focus:outline-0 w-full border-2 border-black rounded-sm  placeholder-zinc-400 focus:outline-none"
-							/>
+							<TypedInput type="text" id="title" />
 						</label>
 						<label htmlFor="description" className=" font-medium mb-1">
 							Description
