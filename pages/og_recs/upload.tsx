@@ -7,8 +7,10 @@ import {
 } from "@mui/icons-material";
 import Layout from "../components/layout";
 import { TypedInput } from "../components/input";
+import { useForm } from "react-hook-form";
 
 const Upload: NextPage = () => {
+	const { register } = useForm();
 	return (
 		<Layout title="Upload">
 			<div className="mx-4">
@@ -99,7 +101,12 @@ const Upload: NextPage = () => {
 					<div className="flex flex-col gap-4 col-span-full mt-2">
 						<label htmlFor="title" className=" font-medium ">
 							Title
-							<TypedInput type="text" id="title" />
+							<TypedInput
+								type="text"
+								id="title"
+								required
+								register={register("title")}
+							/>
 						</label>
 						<label htmlFor="description" className=" font-medium mb-1">
 							Description
