@@ -1,5 +1,5 @@
 import type { UseFormRegisterReturn } from "react-hook-form";
-import { cls } from "../libs/utils";
+import { cls } from "../libs/client/utils";
 
 interface TypedInputProps {
 	type: string;

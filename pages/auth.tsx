@@ -1,18 +1,21 @@
 import { useState } from "react";
 import "material-icons/iconfont/material-icons.css";
-import { cls } from "./libs/utils";
+import { cls } from "./libs/client/utils";
 import { useForm } from "react-hook-form";
 import { TypedInput } from "./components/input";
 import { Email, PhoneAndroid } from "@mui/icons-material";
 import { SocialLoginBtn } from "./components/button";
+import useMutation from "./libs/client/useMutation";
+import { NextPage } from "next";
 
-interface EnterFormProps {
+interface AuthFormProps {
 	email?: string;
 	phone?: string;
 }
 
-export default function Enter() {
-	const { register, reset, handleSubmit } = useForm<EnterFormProps>();
+const Auth: NextPage = () => {
+	const [enter, { loading, data, error }] = useMutation("api/users/auth");
+	const { register, reset, handleSubmit } = useForm<AuthFormProps>();
 	const [method, setMethod] = useState<"email" | "phone">("email");
 	const onEmailClick = () => {
 		reset();
@@ -22,7 +25,9 @@ export default function Enter() {
 		reset();
 		setMethod("phone");
 	};
-	const onValid = (data: EnterFormProps) => {};
+	const onValid = (authForm: AuthFormProps) => {
+		enter(authForm);
+	};
 	return (
 		<div className="p-12 flex flex-col justify-center h-screen">
 			<h3 className="text-3xl text-center font-bold logo">Studio Sunno</h3>
@@ -103,4 +108,6 @@ export default function Enter() {
 			</div>
 		</div>
 	);
-}
+};
+
+export default Auth;

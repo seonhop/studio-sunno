@@ -1,4 +1,4 @@
-import { cls } from "../libs/utils";
+import { cls } from "../libs/client/utils";
 import Link from "next/link";
 import { Search, Add, Dvr, Menu, Close } from "@mui/icons-material";
 
