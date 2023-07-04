@@ -9,17 +9,15 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 	// Create a payload object with the phone number if it exists, otherwise with the email
 	const payload = phone ? { phone: +phone } : { email };
 
-	// Attempt to update the user with the details in the payload, if the user doesn't exist, create a new one
-	const user = await client.user.upsert({
-		where: {
-			...payload,
+	const token = await client.token.create({
+		data: {
+			payload: "1234",
+			user: {
+				connectOrCreate: { where: { ...payload }, create: { ...payload } },
+			},
 		},
-		create: {
-			...payload,
-		},
-		update: {},
 	});
-	console.log(user);
+	console.log(token);
 	return res.status(200).end();
 }
 
