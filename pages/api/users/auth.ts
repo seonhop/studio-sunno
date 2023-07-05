@@ -1,4 +1,5 @@
 import client from "@/pages/libs/server/client";
+import smtpTransport from "@/pages/libs/server/email";
 import withHandler, { ResponseType } from "@/pages/libs/server/withHandler";
 import { NextApiRequest, NextApiResponse } from "next";
 import twilio from "twilio";
@@ -34,9 +35,31 @@ async function handler(
 		const msg = await twilioClient.messages.create({
 			messagingServiceSid: process.env.TWILIO_MSID,
 			to: process.env.PHONE_NUM!,
-			body: `Your login token is ${payload}`,
+			body: `Studio Sunno Verification Code : ${payload}`,
 		});
 		console.log(msg);
+	}
+	if (email) {
+		const mailOptions = {
+			from: process.env.MAIL_ID,
+			to: email,
+			subject: "Studio Sunno Authentication Email",
+			text: `Studio Sunno Verification Code : ${payload}`,
+		};
+		const result = await smtpTransport.sendMail(
+			mailOptions,
+			(error, responses) => {
+				if (error) {
+					console.log(error);
+					return null;
+				} else {
+					console.log(responses);
+					return null;
+				}
+			}
+		);
+		smtpTransport.close();
+		console.log(result);
 	}
 
 	return res.json({ ok: true });
