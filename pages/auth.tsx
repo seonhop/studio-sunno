@@ -4,7 +4,7 @@ import { cls } from "./libs/client/utils";
 import { useForm } from "react-hook-form";
 import { TypedInput } from "./components/input";
 import { Email, PhoneAndroid } from "@mui/icons-material";
-import { SocialLoginBtn } from "./components/button";
+import { LoginBtn, SocialLoginBtn } from "./components/button";
 import useMutation from "./libs/client/useMutation";
 import { NextPage } from "next";
 
@@ -86,10 +86,12 @@ const Auth: NextPage = () => {
 							/>
 						) : null}
 					</div>
-					<button className="transition-colors mt-5 w-full bg-stone-200 hover:bg-stone-300  py-2 px-4 border border-transparent rounded-sm shadow-sm text-sm font-medium focus:ring-2 focus:ring-offset-2 focus:ring-black focus:outline-none ">
-						{method === "email" ? "Get login link" : null}
-						{method === "phone" ? "Get one-time password" : null}
-					</button>
+					{method === "email" ? (
+						<LoginBtn text={loading ? "Sending..." : "Get login link"} />
+					) : null}
+					{method === "phone" ? (
+						<LoginBtn text={loading ? "Sending..." : "Get one-time password"} />
+					) : null}
 				</form>
 
 				<div>

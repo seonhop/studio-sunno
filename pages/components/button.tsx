@@ -20,3 +20,11 @@ export function SocialLoginBtn({ name }: { name: string }) {
 		</button>
 	);
 }
+
+export function LoginBtn({ text }: { text: string }) {
+	return (
+		<button className="transition-colors mt-5 w-full bg-stone-200 hover:bg-stone-300  py-2 px-4 border border-transparent rounded-sm shadow-sm text-sm font-medium focus:ring-2 focus:ring-offset-2 focus:ring-black focus:outline-none ">
+			{text}
+		</button>
+	);
+}
