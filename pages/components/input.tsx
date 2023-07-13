@@ -22,11 +22,12 @@ export function TypedInput({
 	width,
 }: TypedInputProps) {
 	const typedInputClass = cls(tmpClassName, width ? width : "w-full");
-	return type === "number" ? (
+	return id === "phone" ? (
 		<div className="w-full flex items-center">
 			<span className="text-sm mt-1 h-full flex items-center justify-center px-2 py-1 rounded-l-sm border-2 border-r-0 border-black   select-none font-medium ">
 				+1
 			</span>
+			<label htmlFor={id} />
 			<input
 				type={type}
 				id={id}
@@ -40,13 +41,16 @@ export function TypedInput({
 			/>
 		</div>
 	) : (
-		<input
-			type={type}
-			id={id}
-			className={cls(typedInputClass, "border-2 rounded-sm")}
-			placeholder={placeholder || ""}
-			{...register}
-			required={required}
-		/>
+		<>
+			<label htmlFor={id} />
+			<input
+				type={type}
+				id={id}
+				className={cls(typedInputClass, "border-2 rounded-sm")}
+				placeholder={placeholder || ""}
+				{...register}
+				required={required}
+			/>
+		</>
 	);
 }

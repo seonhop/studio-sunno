@@ -13,9 +13,22 @@ interface AuthFormProps {
 	phone?: string;
 }
 
+interface TokenFormProps {
+	token: string;
+}
+
+interface MutationResult {
+	ok: boolean;
+}
+
 const Auth: NextPage = () => {
-	const [enter, { loading, data, error }] = useMutation("api/users/auth");
+	const [enter, { loading, data, error }] =
+		useMutation<MutationResult>("api/users/auth");
+	const [confirmToken, { loading: tokenLoading, data: tokenData }] =
+		useMutation<MutationResult>("api/users/confirm");
 	const { register, reset, handleSubmit } = useForm<AuthFormProps>();
+	const { register: tokenRegister, handleSubmit: tokenHandleSubmit } =
+		useForm<TokenFormProps>();
 	const [method, setMethod] = useState<"email" | "phone">("email");
 	const onEmailClick = () => {
 		reset();
@@ -26,73 +39,95 @@ const Auth: NextPage = () => {
 		setMethod("phone");
 	};
 	const onValid = (authForm: AuthFormProps) => {
+		if (loading) return;
 		enter(authForm);
+	};
+	const onTokenValid = (tokenForm: TokenFormProps) => {
+		if (tokenLoading) return;
+		confirmToken(tokenForm);
 	};
 	return (
 		<div className="p-12 flex flex-col justify-center h-screen">
 			<h3 className="text-3xl text-center font-bold logo">Studio Sunno</h3>
 
 			<div className="flex flex-col my-10">
-				<div className="grid grid-cols-2 p-1 rounded-sm">
-					<button
-						onClick={onEmailClick}
-						className={cls(
-							"text-sm p-1.5 ",
-							method === "email"
-								? "rounded-full text-white font-semibold bg-black"
-								: "text-zinc-500"
-						)}
-					>
-						<div className="flex justify-center items-center gap-2">
-							<Email />
-							<span>Email</span>
+				{data?.ok ? (
+					<form className="my-4" onSubmit={tokenHandleSubmit(onTokenValid)}>
+						<label className="font-medium text-sm">Confirmation Code</label>
+						<TypedInput
+							type="number"
+							id="token"
+							register={tokenRegister("token")}
+							required
+						/>
+						<LoginBtn text={tokenLoading ? "Loading..." : "Confirm"} />
+					</form>
+				) : (
+					<>
+						<div className="grid grid-cols-2 p-1 rounded-sm">
+							<button
+								onClick={onEmailClick}
+								className={cls(
+									"text-sm p-1.5 ",
+									method === "email"
+										? "rounded-full text-white font-semibold bg-black"
+										: "text-zinc-500"
+								)}
+							>
+								<div className="flex justify-center items-center gap-2">
+									<Email />
+									<span>Email</span>
+								</div>
+							</button>
+							<button
+								onClick={onPhoneClick}
+								className={cls(
+									"text-sm p-1 ",
+									method === "phone"
+										? "rounded-full text-white font-semibold bg-black"
+										: "text-zinc-500"
+								)}
+							>
+								<div className="flex justify-center items-center gap-1">
+									<PhoneAndroid />
+									<span>Phone</span>
+								</div>
+							</button>
 						</div>
-					</button>
-					<button
-						onClick={onPhoneClick}
-						className={cls(
-							"text-sm p-1 ",
-							method === "phone"
-								? "rounded-full text-white font-semibold bg-black"
-								: "text-zinc-500"
-						)}
-					>
-						<div className="flex justify-center items-center gap-1">
-							<PhoneAndroid />
-							<span>Phone</span>
-						</div>
-					</button>
-				</div>
-				<form className="my-4" onSubmit={handleSubmit(onValid)}>
-					<label className="font-medium">
-						{method === "email" ? "Email address" : null}
-						{method === "phone" ? "Phone number" : null}
-					</label>
-					<div>
-						{method === "email" ? (
-							<TypedInput
-								type="email"
-								id="email"
-								register={register("email")}
-								required
-							/>
-						) : null}
-						{method === "phone" ? (
-							<TypedInput
-								type="number"
-								id="phone"
-								register={register("phone")}
-								required
-							/>
-						) : null}
-					</div>
-					{method === "email" ? (
-						<LoginBtn text={loading ? "Sending..." : "Get login link"} />
-					) : null}
-					{method === "phone" ? (
-						<LoginBtn text={loading ? "Sending..." : "Get one-time password"} />
-					) : null}
-				</form>
+						<form className="my-4" onSubmit={handleSubmit(onValid)}>
+							<label className="font-medium text-sm">
+								{method === "email" ? "Email address" : null}
+								{method === "phone" ? "Phone number" : null}
+							</label>
+							<div>
+								{method === "email" ? (
+									<TypedInput
+										type="email"
+										id="email"
+										register={register("email")}
+										required
+									/>
+								) : null}
+								{method === "phone" ? (
+									<TypedInput
+										type="number"
+										id="phone"
+										register={register("phone")}
+										required
+									/>
+								) : null}
+							</div>
+							{method === "email" ? (
+								<LoginBtn text={loading ? "Sending..." : "Get login link"} />
+							) : null}
+							{method === "phone" ? (
+								<LoginBtn
+									text={loading ? "Sending..." : "Get one-time password"}
+								/>
+							) : null}
+						</form>
+					</>
+				)}
 
 				<div>
 					<div className="relative my-8">

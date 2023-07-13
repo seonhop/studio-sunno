@@ -32,15 +32,15 @@ async function handler(
 		},
 	});
 	if (phone) {
-		const msg = await twilioClient.messages.create({
+		/* 		const msg = await twilioClient.messages.create({
 			messagingServiceSid: process.env.TWILIO_MSID,
 			to: process.env.PHONE_NUM!,
 			body: `Studio Sunno Verification Code : ${payload}`,
 		});
-		console.log(msg);
+		console.log(msg); */
 	}
 	if (email) {
-		const mailOptions = {
+		/* const mailOptions = {
 			from: process.env.MAIL_ID,
 			to: email,
 			subject: "Studio Sunno Authentication Email",
@@ -59,7 +59,7 @@ async function handler(
 			}
 		);
 		smtpTransport.close();
-		console.log(result);
+		console.log(result); */
 	}
 
 	return res.json({ ok: true });
