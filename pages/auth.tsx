@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "material-icons/iconfont/material-icons.css";
 import { cls } from "./libs/client/utils";
 import { useForm } from "react-hook-form";
@@ -7,6 +7,7 @@ import { Email, PhoneAndroid } from "@mui/icons-material";
 import { LoginBtn, SocialLoginBtn } from "./components/button";
 import useMutation from "./libs/client/useMutation";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 
 interface AuthFormProps {
 	email?: string;
@@ -42,10 +43,17 @@ const Auth: NextPage = () => {
 		if (loading) return;
 		enter(authForm);
 	};
+	const router = useRouter();
 	const onTokenValid = (tokenForm: TokenFormProps) => {
 		if (tokenLoading) return;
 		confirmToken(tokenForm);
 	};
+	useEffect(() => {
+		if (tokenData?.ok) {
+			router.push("/");
+		}
+	}, [tokenData, router]);
+
 	return (
 		<div className="p-12 flex flex-col justify-center h-screen">
 			<h3 className="text-3xl text-center font-bold logo">Studio Sunno</h3>

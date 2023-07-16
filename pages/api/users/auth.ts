@@ -14,7 +14,7 @@ async function handler(
 	const { phone, email } = req.body;
 
 	// Create a payload object with the phone number if it exists, otherwise with the email
-	const loginMethod = phone ? { phone: +phone } : email ? { email } : null;
+	const loginMethod = phone ? { phone: phone } : email ? { email } : null;
 	if (!loginMethod) return res.status(400).json({ ok: false });
 	const payload = Math.floor(100000 + Math.random() * 900000) + "";
 
