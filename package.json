@@ -19,6 +19,7 @@
     "@types/react": "18.2.13",
     "@types/react-dom": "18.2.6",
     "autoprefixer": "10.4.14",
+    "iron-session": "^6.3.1",
     "material-icons": "^1.13.8",
     "next": "13.4.7",
     "next-google-fonts": "^2.2.0",
