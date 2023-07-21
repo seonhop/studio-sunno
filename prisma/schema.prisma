@@ -12,13 +12,14 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  phone     String?  @unique
-  email     String?  @unique
-  avatar    String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  tokens    Token[]
+  id         Int          @id @default(autoincrement())
+  phone      String?      @unique
+  email      String?      @unique
+  avatar     String?
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  tokens     Token[]
+  Recordings Recordings[]
 }
 
 model Token {
@@ -28,6 +29,19 @@ model Token {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   userId    Int
+
+  @@index([userId])
+}
+
+model Recordings {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      Int
+  image       String   @db.Text
+  name        String
+  description String   @db.MediumText
 
   @@index([userId])
 }
