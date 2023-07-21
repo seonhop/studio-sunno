@@ -8,34 +8,20 @@ async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<ResponseType>
 ) {
-	// Destructure phone and email from the request body
-	const { token } = req.body;
-	const foundToken = await client.token.findUnique({
+	const profile = await client.user.findUnique({
 		where: {
-			payload: token,
-		},
-		include: {
-			user: true,
+			id: req.session.user?.id,
 		},
 	});
-	if (!foundToken) return res.status(404).end();
-	req.session.user = {
-		id: foundToken?.userId,
-	};
-	await req.session.save();
-	await client.token.deleteMany({
-		where: {
-			userId: foundToken.userId,
-		},
+	res.json({
+		ok: true,
+		profile,
 	});
-
-	return res.json({ ok: true });
 }
 
 export default withApiSession(
 	withHandler({
-		method: "POST",
+		method: "GET",
 		handler,
-		isPrivate: false,
 	})
 );
